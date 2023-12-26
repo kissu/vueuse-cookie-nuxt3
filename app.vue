@@ -1,15 +1,12 @@
 <template>
   <div>
-    <strong>locale</strong>: {{ cookies.get('locale') }}
-    <hr>
-    <pre>{{ cookies.getAll() }}</pre>
-    <button @click="cookies.set('locale', 'ru-RU')">Russian</button>
-    <button @click="cookies.set('locale', 'en-US')">English</button>
+    <button @click="set('capuccino', 'works')">set cookie</button>
+    <div>cookie? {{ get('capuccino') }}</div>
+    <!-- <div v-if="get('capuccino') === 'works'">hydration 👌🏻</div> -->
+    <button @click="remove('capuccino')">remove cookie</button>
   </div>
 </template>
 
-<script setup>
-import { useCookies } from '@vueuse/integrations/useCookies'
-
-const cookies = useCookies(['locale'])
+<script setup lang="ts">
+const { get, set, remove } = useCookies()
 </script>
